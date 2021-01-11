@@ -18,20 +18,16 @@ function App() {
 
   return (
     <div>
-      {/*<Link to="/login" >login page</Link><br />*/}
-      {/*<Link to="/signUp">SignUp page</Link><br />*/}
-      {/*<Link to="/dashBoard">DashBoard page</Link><br />*/}
-      {/*<Link to="/playJoin">Play Join</Link><br />*/}
       {token ? null : <Redirect to='./login'/>}
       <Switch>
         <Route path="/login" component={Login} />
-        <Route path="/signUp" component={Signup} />
+        <Route path="/signup" component={Signup} />
         <Route path="/dashBoard" component={DashBoard} />
         <Route path="/createGame" component={CreateGame} />
         <Route path="/playGame/:gameId/:playerId" component={PlayGame} />
         <Route path="/playJoin/:gameId/:sessionId" component={PlayJoin} />
         <Route path="/playJoin/:gameId/" component={PlayJoin} />
-        <Route path="/result/:sessionId" component={Result} />
+        <Route path="/result/:sessionId" component={Result} /> 
         <Route path="/editGame/:gameId" component={editGame_new} />
       </Switch>
     </div>

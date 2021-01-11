@@ -28,7 +28,6 @@ const CreateGame = (props) => {
       .then(res =>{
         const gameID = res.quizId;
         console.log(gameID);
-        history.push(`../dashBoard/gameDetail/${gameID}`);
       }).catch(res => console.log(res));
   }
 

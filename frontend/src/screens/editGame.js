@@ -167,7 +167,11 @@ export default function EditGame() {
     console.log(props.question);
     if (!currentQuestoinFlag) return null;
     return questions.length === 0 ?
-      <Typography>There is no question in current game. Please add new questions.</Typography> :
+      <div style={{ textAlign: "center", margin: "auto", color: "gray", top: "50%", left: "50%" }}>
+        <Typography variant="h3">There is no question in current game.</Typography>
+        <Typography variant="h3">Please add new questions.</Typography>
+      </div>
+      :
       <EditCard game={quiz} gameId={gameId} questions={questions} index={currentEditedQuestionIndex} />
   }
 
@@ -259,17 +263,21 @@ export default function EditGame() {
       ) : null;
   }
 
+  const backToDashboard = () => {
+    history.push('../dashboard')
+  }
 
-   // Clear token stored in redux and redirect to login page
+
+  // Clear token stored in redux and redirect to login page
   //log out to the main page
-  function loginOut(){
+  function loginOut() {
     fetch(`http://localhost:${PORT_NUM}/admin/auth/logout`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       }
-    }).then(()=>{
+    }).then(() => {
       dispatch({ type: 'setToken', value: '' });
       history.push('../login')
     })
@@ -346,6 +354,12 @@ export default function EditGame() {
               <BarChartIcon />
             </ListItemIcon>
             <ListItemText primary="Add Thumbnail" />
+          </ListItem>
+          <ListItem button onClick={backToDashboard}>
+            <ListItemIcon>
+              <BarChartIcon />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" />
           </ListItem>
           <ListItem button onClick={loginOut}>
             <ListItemIcon>
